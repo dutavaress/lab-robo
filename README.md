@@ -24,3 +24,20 @@ que se encontra. Cada movimento consome 1 pulso de clock.
 
 ### Explicação do código feito
 
+Este módulo de Verilog tem como objetivo descrever as movimentações e comportamentos de um robô, no qual utiliza informações sobre sua orientação ('head') e a presença de obstáculos à esquerda ('left'). Dessa forma, o robô pode girar ou avançar.
+
+O comportamento do robô é controlado por uma máquina de estados finitos com três estados: 
+
+1.procurandoMuro
+
+2.rotacionando
+
+3.acompanhandoMuro
+
+O estado inicial é 'procurandoMuro'. Ele permanecerá nesse estado até que encontre um obstáculo à sua frente ou à sua esquerda. Caso haja a sua frente, ele mudará para o estado 'rotacionando', onde ele girará até que não haja obstáculos a sua frente ou a sua esquerda, para evitar colisões.
+
+Caso encontre um obstáculo a esquerda, ele mudará para o estado 'acompanhandoMuro', onde seguirá o muro à sua esquerda, sempre ajustando sua direção a fim de acompanhá-lo. Caso não haja o muro à esquerda, ele retornará ao seu estado inicial 'procurandoMuro'.
+
+As saídas 'avancar' e 'girar' são atualizadas em cada pulso de clock e são determinadas com base no estado atual e nas entradas.
+
+Em conclusão, ressalta-se que o comportamento do robô foi definido com base em um ambiente específico, sendo necessário adaptações em caso de alteração do espaço testado.
